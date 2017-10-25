@@ -22,6 +22,9 @@ Article.prototype.toHtml = function() {
   let $newArticle = $('article.template').clone();
   /* TODO: This cloned article still has a class of template. In our modules.css stylesheet, we should give all elements with a class of template a display of none so that our template does not display in the browser. But, we also need to make sure we're not accidentally hiding our cloned article. */
 
+  $('article').removeClass('template');
+
+
   if (!this.publishedOn) $newArticle.addClass('draft');
   $newArticle.data('category', this.category);
 
@@ -33,16 +36,16 @@ Article.prototype.toHtml = function() {
       4. article body, and
       5. publication date. */
 
-  $('address').children().text(this.author);
-  $('address').children().attr('href', this.authorUrl);
-  $('article').attr('data-category', this.category);
-  $('article h1').text(this.title);
-  $('.article-body').html(this.body);
+  $('address:last').children().text(this.author);
+  $('address:last').children().attr('href', this.authorUrl);
+  $('article:last').attr('data-category', this.category);
+  $('article h1:last').text(this.title);
+  $('.article-body:last').html(this.body);
+  $('article:last').addClass('clearfix');
 
-  // $('article').removeClass('template');
   // REVIEW: Display the date as a relative number of 'days ago'
-  $newArticle.find('time').html('about ' + parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000) + ' days ago');
-  $newArticle.append('<hr>');
+  $('article:last').find('time').html('about ' + parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000) + ' days ago');
+  $('article:last').after('<hr>');
   return $newArticle;
 };
 
@@ -59,14 +62,8 @@ rawData.sort(function(a,b) {
 
 rawData.forEach(function(art) {
   articles.push(new Article(art));
-})
+});
 
-
-$('#articles').append(articles[0].toHtml());
-$('#articles').append(articles[1].toHtml());
-$('#articles').append(articles[2].toHtml());
-
-
-// for(let i = 0; i < articles.length; i++) {
-//   $('#articles').append(articles[i].toHtml());
-// }
+articles.forEach(function(art){
+  $('#articles').append(art.toHtml());
+});

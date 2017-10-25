@@ -74,6 +74,11 @@
   margin-bottom: 2em;
 }
 
-.hide {
+.template {
   display: none;
 }
+
+/*
+.show {
+  display: block;
+}*/
