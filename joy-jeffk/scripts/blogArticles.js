@@ -1,7 +1,7 @@
 'use strict';
 
 // COMMENT: How is this data utilized within our blog app? What is the structure of this data (your response should include the terms "object", "array", and "key/value pairs")?
-// PUT YOUR RESPONSE HERE
+// This will be passed into our constructor in article.js.  It's an array of objects with key/value pairs such as title: 'Bacon Ipsum'.
 
 let rawData = [
   {
