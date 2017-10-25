@@ -1,0 +1,75 @@
+.site-header {
+  background: #fceab2;
+  margin-bottom: 30px;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.icon-menu:before {
+  font-size: 4em;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+
+.icon-menu li {
+  display: none;
+  list-style: none;
+  color: #777;
+  position: relative;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.5em;
+  border-bottom: solid 1px lightgray;
+  margin: 0 0.5em 0 0.2em;
+  padding: 0.7em 0;
+}
+
+.main-nav:hover .icon-menu li {
+  display: block;
+}
+
+/* FOR DESKTOP */
+@media only screen and (min-width: 640px) {
+  .icon-menu:before {
+    display: none;
+  }
+
+  .icon-menu {
+    padding-left: 2em;
+  }
+
+  .icon-menu li {
+    display: inline-block;
+    margin: -0.8em 0 0.5em 0;
+    border: 0;
+  }
+
+  .main-nav:hover .icon-menu li {
+    display: inline-block;
+  }
+
+  .site-header {
+    margin-bottom: 10px;
+  }
+
+  img {
+    float: right;
+    /* this looks so bad omg */
+  }
+
+}
+
+.byline {
+  font-size: 1.2em;
+  color: #777;
+  margin-bottom: 1.3em;
+}
+
+.article-body {
+  padding: 0;
+  margin-bottom: 2em;
+}
